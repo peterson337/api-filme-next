@@ -1,6 +1,6 @@
 'use client'
 import React, {useState, useEffect} from 'react'
-
+import {MovieCards} from "../components/MovieCards";
 interface Movie {
     title: string;
     // outras propriedades do filme
@@ -8,6 +8,7 @@ interface Movie {
 
 export const Index = () => {
     const [topMovies, setTopMovies] = useState<Movie[]>([]);
+    const [showLink, setShowLink] = useState(false);
 
 
     useEffect(() => {
@@ -21,16 +22,27 @@ export const Index = () => {
     }, [])
 
     return (
-    <div>
-        {
-            topMovies.map((val : any) => {
-                return(
-                    <div key={val.title}>
-                        <p>{val.title}</p>
-                    </div>
-                )
-            })
-        }
+    //? CONTAINER   
+     <div>
+       <h2>Melhores filmes:</h2>
+
+       <div>
+      {
+        topMovies.length === 0 ? (
+          <div>Carregando...</div>
+        ) : (
+          topMovies.map((movie) => (
+            <div key={movie.title}>
+                <MovieCards
+                  movie={movie}
+                  showLink={showLink}
+                  setShowLink={setShowLink}
+                  />
+            </div>
+          ))
+        )
+      }
+       </div>
     </div>
   )
 }
