@@ -8,7 +8,7 @@ interface Movie {
 
 export const Index = () => {
     const [topMovies, setTopMovies] = useState<Movie[]>([]);
-    const [showLink, setShowLink] = useState(false);
+    const [showLink, setShowLink] = useState(true);
 
 
     useEffect(() => {
@@ -23,10 +23,10 @@ export const Index = () => {
 
     return (
     //? CONTAINER   
-     <div>
+     <div className=' text-[#fff] text-[2.5rem] text-center m-[2rem] '>
        <h2>Melhores filmes:</h2>
 
-       <div>
+       <div className='flex flex-wrap	space-x-4 md:space-x-14'>
       {
         topMovies.length === 0 ? (
           <div>Carregando...</div>

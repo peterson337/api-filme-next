@@ -10,10 +10,11 @@ type Props = {
 
 
 export const MovieCards = ({movie, showLink} : Props) => {
+        const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   return (
-    <div>
-        <img src="https://api.themoviedb.org/3/movie/popular?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1/fiVW06jE7z9YnO4trhaMEdclSiC.jpg" 
-          alt={movie.title} />
+    <div className=''>
+        <img src={imageUrl + movie.poster_path}  
+           alt={movie.title}  />
 
          <h2> {movie.title} </h2>
 
@@ -22,7 +23,7 @@ export const MovieCards = ({movie, showLink} : Props) => {
          </p>
 
          {                       
-            showLink &&  <Link href={`/Movie/${movie.id}`}>Detalhes</Link> 
+            showLink &&  <Link href={`/${movie.id}/`}>Detalhes</Link> 
          }
     </div>
   )
