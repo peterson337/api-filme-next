@@ -16,23 +16,9 @@ type Props = {
 import { NextResponse } from 'next/server'
 
 
-export default function Movie(request: Request) {
+export default function Movie() {
   const [movies, setMovies] = useState<null | Props[]>(null);
   const [url, seturl] = useState<string | null>('');
-
-useEffect(() => {
-  const teste = async () => {
-    const { searchParams } = new URL(request.url)
-    const id = searchParams.get('id')
-    seturl(id);
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${url}?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1`)
-    const product = await res.json()
-   
-    setMovies(product)
-  }
-      teste();
-}, [])
-
 
     
 /*   useEffect(() => {
