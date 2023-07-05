@@ -15,25 +15,31 @@ export const MovieCards = ({movie, showLink} : Props) => {
     <div className=' p-4 bg-[#111] mb-[2.5rem]'>
         <img src={imageUrl + movie.poster_path}  
            alt={movie.title}
-           className=''
+           className=' max-w-[100%] mb-[1rem]'
              />
 
          <h2
-            className='md:w-96 text-[2.5rem] max-w-[1200px]'
+            className=' text-[1.5rem] max-w-[1200px] mb-[1rem]'
          > 
          {movie.title}
           </h2>
 
          <p>
-                <span className='flex text-2xl'><FaStar className='mr-2'/> {movie.vote_average}</span>
+                <span className='flex text-2xl mb-[1rem]'>
+                <FaStar className='mr-2 text-[#f7d354]'/> 
+                {movie.vote_average}
+                </span>
          </p>
 
          {                       
             showLink &&  <Link href={`/${movie.id}/`}
-                              className='text-[#f7d354] text-2xl hover:text-[#b8930c]'
+                              className='bg-[#f7d354] border-2 border-[#f7d354] rounded-lg
+                              text-[#000] p-4 text-[1.3rem] flex
+                              justify-center cursor-pointer transition
+                              hover:bg-[transparent] hover:text-[#f7d354]'
                           >
                             Detalhes
-                            </Link> 
+                          </Link> 
          }
     </div>
   )

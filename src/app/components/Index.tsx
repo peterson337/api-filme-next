@@ -23,17 +23,18 @@ export const Index = () => {
 
     return (
     //? CONTAINER   
-     <div className=' text-[#fff]  m-[2rem '>
-       <h2 className='text-[2.5rem]'>Melhores filmes:</h2>
+     <div className=' text-[#fff]  m-[2rem] '>
+       <h2 className='text-[2.5rem] text-center'>Melhores filmes:</h2>
 
-       <div className='flex flex-wrap	 justify-between'>
+       <div className='flex flex-wrap	justify-between'>
       {
         topMovies.length === 0 ? (
           <div>Carregando...</div>
         ) : (
           topMovies.map((movie) => (
             <div key={movie.title} 
-              className='flex md:w-[30%] m-3 p-[1rem]'
+              className='flex  flex-wrap
+                          justify-between md:w-[30%]	'
             >
                 <MovieCards
                   movie={movie}

@@ -1,9 +1,23 @@
-import React from 'react'
+'use client'
+import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { BsFillCameraVideoFill, BsSearch} from 'react-icons/bs'
+import { useRouter } from 'next/navigation'
 
 
 export const Navbar = () => {
+      const [search, setSearch] = useState('');
+      const router = useRouter()
+
+      const handleSubmit = (e : any) => {
+        e.preventDefault();
+
+        if (!search) return;
+
+        router.push(`/Search?q=${search}`);
+        setSearch('');
+      }
+
   return (
     <div className=' text-white'>
           <div className='flex justify-between 
@@ -25,9 +39,17 @@ export const Navbar = () => {
             </div>
 
                 <div >
-                    <form className='flex flex-row gap-[0.5rem]'>
+                    <form 
+                    onSubmit={handleSubmit}
+                    className='flex flex-row gap-[0.5rem]'
+
+                    >
                     <input type="text"
-                     className=' w-32 p-[0.2rem] rounded-full border-none' />   
+                     className=' w-32 p-[0.2rem] rounded-full border-none
+                                 text-black' 
+                     value={search}
+                     onChange={(e) => setSearch(e.target.value)}
+                     />   
 
                     <button
                     type='submit'
