@@ -12,7 +12,9 @@ type Props = {
 export const MovieCards = ({movie, showLink} : Props) => {
         const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   return (
-    <div className=' p-4 bg-[#111] mb-[2.5rem]'>
+    <div>
+     {  showLink?
+      ( <div className=' p-4 bg-[#111] mb-[2.5rem]'>
         <img src={imageUrl + movie.poster_path}  
            alt={movie.title}
            className=' max-w-[100%] mb-[1rem]'
@@ -30,9 +32,8 @@ export const MovieCards = ({movie, showLink} : Props) => {
                 {movie.vote_average}
                 </span>
          </p>
-
-         {                       
-            showLink &&  <Link href={`/${movie.id}/`}
+                      
+             <Link href={`/${movie.id}/`}
                               className='bg-[#f7d354] border-2 border-[#f7d354] rounded-lg
                               text-[#000] p-4 text-[1.3rem] flex
                               justify-center cursor-pointer transition
@@ -40,7 +41,41 @@ export const MovieCards = ({movie, showLink} : Props) => {
                           >
                             Detalhes
                           </Link> 
-         }
+         
+    </div>)
+    :
+    (
+      <div
+          className=''
+      >
+         <div className=' p-4 bg-[#111] mb-[2.5rem]'>
+
+         <h2
+            className=' text-[2rem] max-w-[1200px] mb-[1rem]'
+         > 
+         {movie.title}
+          </h2>
+
+        <img src={imageUrl + movie.poster_path}  
+           alt={movie.title}
+           className=' max-w-[100%] mb-[1rem]'
+             />
+
+      
+
+         <p>
+                <span className='flex text-2xl mb-[1rem] justify-center '>
+                <FaStar className='mr-2 text-[#f7d354]'/> 
+                {movie.vote_average}
+                </span>
+         </p>
+                      
+ 
+         
+    </div>
+      </div>
+    )
+     }
     </div>
   )
 }
