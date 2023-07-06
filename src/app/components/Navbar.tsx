@@ -45,10 +45,11 @@ export const Navbar = () => {
 
                     >
                     <input type="text"
-                     className=' w-32 p-[0.2rem] rounded-full border-none
-                                 text-black' 
+                     className=' w-32 md:w-56 p-[0.2rem] rounded-full border-none
+                                 text-black pl-3' 
                      value={search}
                      onChange={(e) => setSearch(e.target.value)}
+                     placeholder='Busque algum filme'
                      />   
 
                     <button

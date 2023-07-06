@@ -11,29 +11,38 @@ import {
 } from "react-icons/bs";
 
 type Props = {
-
+  title: string;
 }
-import { NextResponse } from 'next/server'
-
 
 export default function Movie() {
-  const [movies, setMovies] = useState<null | Props[]>(null);
-  const [url, seturl] = useState<string | null>('');
+  const [movie, setMovie] = useState<Props | null>(null);
+  const [url, setUrl] = useState<string | null>('');
 
+  const pathname = usePathname();
     
-/*   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/39108?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1`, {
-        method: 'GET',
-       })
-       .then(response => response.json())
-       .then((json) => {
-        setMovies(json);
-       })      
-}, []) */
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/${pathname}?api_key=506fadb0256c13349acc05dabebf9604&language=en-US&page=1`, {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then((json) => {
+      setMovie(json);
+      console.log(json);
+    })
+    .catch((error) => {
+      console.log(error);
+    })      
+  }, [])
 
     return (
       <div>
-       <p>Paranetro:{url}</p>
+   <div>
+    {movie && (
+      <div key={movie.title}>
+        <p>{movie.title}</p>
+      </div>
+    )}
+  </div>
       </div>
     )
   }
