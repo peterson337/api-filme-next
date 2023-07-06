@@ -35,7 +35,7 @@ export const MovieCards = ({movie, showLink} : Props, {release_date, genres} : T
           </h2>
 
          <p>
-                <span className='flex text-2xl mb-[1rem] border-b-2 pb-3'>
+                <span className='flex text-2xl mb-[1rem]'>
                 <FaStar className='mr-2 text-[#f7d354] '/> 
                 {movie.vote_average}
                 </span>
