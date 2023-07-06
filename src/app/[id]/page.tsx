@@ -116,7 +116,8 @@ export default function Movie() {
 
                   <div
                   className='flex md:flex-row flex-row 
-                            space-x-3 border-b-2 pb-3 pt-3 w-72 text-center md:w-96 mr-7'
+                            space-x-3 border-b-2 pb-3 pt-3 w-72 
+                            text-center md:w-96 mr-7 flex-wrap'
 
                   >
                     <span
@@ -129,7 +130,7 @@ export default function Movie() {
                   key={val.id}
                   >
                       <p
-                    className='md:text-[1.5rem] text-[18px]'
+                    className='md:text-[1.5rem] text-[18px] text-center'
 
                       >
                      <span
