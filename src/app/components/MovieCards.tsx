@@ -8,9 +8,17 @@ type Props = {
     setShowLink: (value: boolean) => void;
 }
 
+type Teste = {
+  release_date: string;
+  genres: Array<string>;
 
-export const MovieCards = ({movie, showLink} : Props) => {
+}
+
+
+export const MovieCards = ({movie, showLink} : Props, {release_date, genres} : Teste) => {
         const imageUrl = 'https://image.tmdb.org/t/p/w500/';
+
+        
   return (
     <div>
      {  showLink?
@@ -27,8 +35,8 @@ export const MovieCards = ({movie, showLink} : Props) => {
           </h2>
 
          <p>
-                <span className='flex text-2xl mb-[1rem]'>
-                <FaStar className='mr-2 text-[#f7d354]'/> 
+                <span className='flex text-2xl mb-[1rem] border-b-2 pb-3'>
+                <FaStar className='mr-2 text-[#f7d354] '/> 
                 {movie.vote_average}
                 </span>
          </p>
@@ -48,22 +56,29 @@ export const MovieCards = ({movie, showLink} : Props) => {
       <div
           className=''
       >
-         <div className=' p-4 bg-[#111] mb-[2.5rem]'>
+         <div className='  mt-[2.5rem]'>
 
          <h2
-            className=' text-[2rem] max-w-[1200px] mb-[1rem]'
+            className=' md:text-[2rem] text-[1.5rem] max-w-[1200px] mb-[1rem]'
          > 
          {movie.title}
           </h2>
 
         <img src={imageUrl + movie.poster_path}  
            alt={movie.title}
-           className=' max-w-[100%] mb-[1rem]'
+           className=' max-w-[100%] mb-[1rem] w-72 
+                      md:w-96 ml-5'
              />
 
+          <p
+          className='md:text-2xl text-[20px] border-b-2 pb-3'
+          >Lançamento do filme: {movie.release_date}
+          </p>
       
 
-         <p>
+         <p
+         className='border-b-2 pt-3'
+         >
                 <span className='flex text-2xl mb-[1rem] justify-center '>
                 <FaStar className='mr-2 text-[#f7d354]'/> 
                 {movie.vote_average}

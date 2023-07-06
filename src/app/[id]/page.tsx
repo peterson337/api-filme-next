@@ -10,6 +10,8 @@ import {
   BsFillFileEarmarkTextFill,
 } from "react-icons/bs";
 
+import Image from 'next/image'
+
 type Props = {
   title: string;
   tagline: string;
@@ -17,12 +19,30 @@ type Props = {
   revenue: number;
   runtime: string;
   overview: string;
+  release_date: string;
+  genres: Array<string>;
+  name: string;
+
 }
 
-export default function Movie() {
+type genres = {
+  name: string;
+  id: string;
+}
+
+type productionCompanies = {
+  name: string;
+  id: string;
+  logo_path: string;
+  origin_country: string;
+}
+
+export default function Movie({release_date} : Props) {
   const [movie, setMovie] = useState<Props | null>(null);
   const [url, setUrl] = useState<string | null>('');
   const [showLink, setShowLink] = useState(false);
+  const [genres, setGenres] = useState<genres[]>([]);
+  const [productionCompanies, setProductionCompanies] = useState<productionCompanies[]>([]);
 
 
   const pathname = usePathname();
@@ -34,7 +54,8 @@ export default function Movie() {
     .then(response => response.json())
     .then((json) => {
       setMovie(json);
-      console.log(json);
+      setGenres(json.genres);
+      setProductionCompanies(json.production_companies);
     })
     .catch((error) => {
       console.log(error);
@@ -66,14 +87,72 @@ export default function Movie() {
                   showLink={showLink}
                   setShowLink={setShowLink}
                   />
-                  <p>{movie.tagline}</p>
 
                   <div
-                    className='flex flex-col justify-center items-center text-center space-y-[1.5rem]'
+                  className='border-b-2 pb-3 pt-3'
+                  >
+                    {
+                      productionCompanies.map((productionCompany) => {
+                        return(
+                          <div
+                          key={productionCompany.id}
+                          className='mb-5'
+                          >
+                            <p
+                            className='md:text-[1.5rem] text-[20px] '
+                            >Nome da empresa: {productionCompany.name}</p>
+
+                        
+                            <p
+                            className='md:text-[1.5rem] text-[20px]'
+                            > País de origin: {productionCompany.origin_country}</p>
+
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+
+                  <div
+                  className='flex md:flex-row flex-col 
+                            space-x-3 border-b-2 pb-3 pt-3 w-72 md:w-[600px]'
+
+                  >
+                    <span
+                    className='md:text-[1.5rem] text-[20px]'
+                    > Genero: </span>
+                  {
+          genres.map((val) => {
+                return(
+                  <div
+                  key={val.id}
+                  >
+                      <p
+                    className='md:text-[1.5rem] text-[20px]'
+
+                      >
+                     <span
+                                className=' font-bold'
+                              >{val.name}</span>
+                      
+                      </p>
+                  </div>
+                )
+          })
+        }
+                  </div>
+                 {/*  <p
+                  className='mt-3'
+                  >{movie.tagline}</p> */}
+
+                  <div
+                    className='flex flex-col justify-center 
+                               items-center text-center space-y-[1.5rem]'
                   >
 
                     <div
-                    className='flex flex-row justify-center items-center text-center'
+                    className='flex flex-row justify-center items-center 
+                                text-center border-b-2 pb-3 pt-3'
                     >
                     <h3 
                     className='mt-1'
@@ -96,8 +175,11 @@ export default function Movie() {
                       >{formatCurrency(movie.budget)}</p>
                     </div>
 
+                    
+
                     <div
-                    className='flex flex-row justify-center items-center text-center'
+                    className='flex flex-row justify-center items-center 
+                               text-center border-b-2 pb-3'
                     >
                     <h3 
                     className='mt-1'
@@ -124,7 +206,8 @@ export default function Movie() {
 
                     
                     <div
-                    className='flex flex-row justify-center items-center text-center'
+                    className='flex flex-row justify-center 
+                               items-center text-center border-b-2 pb-3'
                     >
                     <h3 
                     className='mt-1'
@@ -149,7 +232,8 @@ export default function Movie() {
                     </div>
 
                     <div
-                    className='flex flex-row justify-center items-center text-center '
+                    className='flex flex-row justify-center 
+                               items-center text-center'
                     >
                     <h3 
                     className='mt-1'
@@ -178,10 +262,14 @@ export default function Movie() {
                       >{movie.overview}
                       </p>
 
+
+
+                      
                   
                   </div>
       </div>
     )}
+    
   </div>
       </div>
     )

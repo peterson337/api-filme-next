@@ -18,7 +18,6 @@ export default function Search() {
       useEffect(() => {
         const url = new URL(window.location.href);
         const query = url.searchParams.get('q');
-        console.log(query);
 
         seturl(query);
         
@@ -34,7 +33,6 @@ export default function Search() {
            })      
     }, [url])
       
-    console.log(movies);
     
     return(
       <div className=' text-[#fff]  m-[2rem] '>
