@@ -71,9 +71,10 @@ export default function Movie() {
 
     return (
       <div
-
+        className=''
       >
    <div
+   className=''
    >
     {movie && (
       <div

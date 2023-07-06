@@ -56,7 +56,7 @@ export const MovieCards = ({movie, showLink} : Props, {release_date, genres} : T
       <div
           className=''
       >
-         <div className='  mt-[2.5rem]'>
+         <div className='  mt-[2.5rem] '>
 
          <h2
             className=' md:text-[2rem] text-[1.5rem] max-w-[1200px] mb-[1rem]'
@@ -64,11 +64,12 @@ export const MovieCards = ({movie, showLink} : Props, {release_date, genres} : T
          {movie.title}
           </h2>
 
-        <img src={imageUrl + movie.poster_path}  
-           alt={movie.title}
-           className=' max-w-[100%] mb-[1rem] w-72 
-                      md:w-96 ml-5'
-             />
+          <img
+            src={imageUrl + movie.poster_path}
+            alt={movie.title}
+            className="max-w-[100%] mb-[1rem] w-72 md:w-96 ml-auto mr-auto"
+          />
+
 
           <p
           className='md:text-2xl text-[20px] border-b-2 pb-3'

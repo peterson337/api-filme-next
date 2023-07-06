@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { BsFillCameraVideoFill, BsSearch} from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
+import { SiThemoviedatabase } from 'react-icons/si'
 
 
 export const Navbar = () => {
@@ -22,19 +23,19 @@ export const Navbar = () => {
     <div className=' text-white'>
           <div className='flex justify-between 
                           align-center bg-[#121212]
-                          p-[1rem] border-b-2'>
+                          p-[1rem] border-b-2 '>
         
             
             <div
-            className=' text-[#f7d354] hover:text-[#b8930c] text-2xl'
+            className=' text-[#f7d354] hover:text-[#b8930c]'
             >
             <Link href={'/'}>
 
-            <span className=' flex flex-row'>
-            <BsFillCameraVideoFill className='mt-1'/> 
-            <p className='flex ml-2 justify-center gap-[0.5rem]'>Movies lib</p>
-            </span>
-
+            
+            <SiThemoviedatabase className='mt-1 text-5xl md:text-5xl 
+                                           md:absolute md:top-1 
+                                           absolute top-1' /> 
+            
             </Link>
             </div>
 
