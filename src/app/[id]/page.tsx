@@ -37,7 +37,7 @@ type productionCompanies = {
   origin_country: string;
 }
 
-export default function Movie({release_date} : Props) {
+export default function Movie() {
   const [movie, setMovie] = useState<Props | null>(null);
   const [url, setUrl] = useState<string | null>('');
   const [showLink, setShowLink] = useState(false);
@@ -115,7 +115,7 @@ export default function Movie({release_date} : Props) {
 
                   <div
                   className='flex md:flex-row flex-col 
-                            space-x-3 border-b-2 pb-3 pt-3 w-72 md:w-[600px]'
+                            space-x-3 border-b-2 pb-3 pt-3 w-72 md:w-[690px] md:ml-14'
 
                   >
                     <span
