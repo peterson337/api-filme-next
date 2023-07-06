@@ -7,6 +7,7 @@ import { NextResponse } from 'next/server'
 interface Movie {
   title: string;
   // outras propriedades do filme
+  id: string;
 }
 
 export default function Search() {
@@ -20,6 +21,7 @@ export default function Search() {
         const query = url.searchParams.get('q');
 
         seturl(query);
+
         
       },)
 
@@ -50,7 +52,7 @@ export default function Search() {
           <div>Carregando...</div>
         ) : (
           movies.map((movie) => (
-            <div key={movie.title} 
+            <div key={movie.id} 
               className='flex  flex-wrap
                           justify-between md:w-[30%]	'
             >

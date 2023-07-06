@@ -114,12 +114,12 @@ export default function Movie() {
                   </div>
 
                   <div
-                  className='flex md:flex-row flex-col 
-                            space-x-3 border-b-2 pb-3 pt-3 w-72 md:w-[690px] md:ml-14'
+                  className='flex md:flex-row flex-row 
+                            space-x-3 border-b-2 pb-3 pt-3 w-72 text-center md:w-96 mr-7'
 
                   >
                     <span
-                    className='md:text-[1.5rem] text-[20px]'
+                    className='md:text-[1.5rem] text-[18px]'
                     > Genero: </span>
                   {
           genres.map((val) => {
@@ -128,7 +128,7 @@ export default function Movie() {
                   key={val.id}
                   >
                       <p
-                    className='md:text-[1.5rem] text-[20px]'
+                    className='md:text-[1.5rem] text-[18px]'
 
                       >
                      <span
