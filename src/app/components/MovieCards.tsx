@@ -71,10 +71,7 @@ export const MovieCards = ({movie, showLink} : Props, {release_date, genres} : T
           />
 
 
-          <p
-          className='md:text-2xl text-[20px] border-b-2 pb-3'
-          >Lançamento do filme: {movie.release_date}
-          </p>
+ 
       
 
          <p
